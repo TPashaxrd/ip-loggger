@@ -33,7 +33,7 @@ function Auth() {
         }, { withCredentials: true });
 
         setSuccess("✔ Logged in successfully!");
-        console.log(res.data);
+        setTimeout(() => window.location.href = "/", 2000)
       } 
       else {
         const res = await axios.post(`${data.api}/api/auth/register`, {
@@ -42,8 +42,10 @@ function Auth() {
           password,
         }, { withCredentials: true });
 
-        setSuccess("✔ Account created successfully!");
-        console.log(res.data);
+        if(res.status === 201) {
+          setTimeout(() => window.location.href = "/", 200)
+          setSuccess("✔ Account created successfully!");
+        }
       }
 
     } catch (err: any) {

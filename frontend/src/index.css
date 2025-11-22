@@ -28,7 +28,9 @@
 ! font-family: "Roboto", sans-serif;
 */ 
 
-
+body {
+    font-family: 'Space Grotesk', serif;
+}
 /* body { */
   /* font-family: 'Space Grotesk', serif; */
 /* } */

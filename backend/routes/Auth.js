@@ -5,7 +5,7 @@ const { authLimiter, loginLimiter, generalAuthLimiter } = require("../middleware
 
 const router = express.Router()
 
-router.post("/create", validator({
+router.post("/register", validator({
     email: { required: true, minLength: 6 },
     username: { required: true, minLength: 3 },
     password: { required: true, minLength: 6 }

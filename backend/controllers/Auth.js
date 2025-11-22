@@ -25,6 +25,8 @@ const CreateAuth = async (req, res) => {
 
         await newUser.save()
 
+        req.session.userId = user._id;
+
         res.status(201).json({ message: "Successfully registered.", newUser})
     } catch (error) {
         res.status(500).json({ message: error.message })

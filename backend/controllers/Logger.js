@@ -68,7 +68,6 @@ const LogVisitor = async (req, res) => {
         await logger.save();
 
         res.redirect(logger.redicertUrl);
-
     } catch (err) {
         console.error("Log Visitor Error:", err.message);
         res.status(500).send("Internal Server Error");

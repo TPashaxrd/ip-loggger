@@ -10,5 +10,6 @@ router.get("/log/:id", viewLimiter, LogVisitor);
 router.post("/get", viewLimiter, isAuth, getLogById)
 router.post("/edit", isAuth, editRedicertUrl)
 router.post("/delete", viewLimiter, isAuth, deleteLoggerById)
+// Clear all logs.
 
 module.exports = router;
