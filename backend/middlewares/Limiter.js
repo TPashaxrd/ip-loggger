@@ -33,8 +33,32 @@ const generalAuthLimiter = rateLimit({
   }
 });
 
+const createLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Too many create attempts. Please try again later."
+  }
+})
+
+const viewLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Too many view attempts. Please try again later."
+  }
+})
+
 module.exports = {
   authLimiter,
   loginLimiter,
-  generalAuthLimiter
+  generalAuthLimiter,
+  createLimiter,
+  viewLimiter
 };

@@ -6,6 +6,9 @@ const cors = require("cors")
 const MongoStore = require("connect-mongo")
 const session = require("express-session")
 const AuthRoutes = require("./routes/Auth")
+const LoggerRoutes = require("./routes/Logger")
+const AdminRoutes = require("./routes/Admin")
+const { CheckUserAgent } = require("./middlewares/UserAgentCheck")
 const app = express()
 
 app.set("trust proxy", 0)
@@ -49,8 +52,10 @@ app.use(session({
     }
 }))
 
+// app.use(CheckUserAgent)
 applyLoggingMiddleware(app)
 applySecurityMiddlewares(app)
+// MIDDLEWAREs
 
 // app.get("/health", async (req, res) => {
 //     const dbStatus = mongoose.connection.readyState === 1 ? "up" : "down";
@@ -59,7 +64,8 @@ applySecurityMiddlewares(app)
 
 // R0UTES's
 app.use("/api/auth", AuthRoutes)
-
+app.use("/api/logger", LoggerRoutes)
+app.use("/api/admin", AdminRoutes)
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {

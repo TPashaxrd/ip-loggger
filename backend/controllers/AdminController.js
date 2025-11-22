@@ -1,3 +1,4 @@
+const Logger = require("../models/Logger")
 const User = require("../models/User")
 
 const getAllUsers = async (req, res) => {
@@ -46,8 +47,19 @@ const removeBanRole = async(req,res) => {
     }
 }
 
+const getAllLogs = async (req, res) => {
+    try {
+        const allLogs = await Logger.find();
+        if (!allLogs.length) return res.status(404).json({ message: "No logs found" });
+        res.status(200).json({ allLogs });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getAllUsers,
     banUser,
-    removeBanRole
+    removeBanRole,
+    getAllLogs
 }

@@ -1,9 +1,9 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const LoggerSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        req: "Users",
+        ref: "Users",
         required: true
     },
     redicertUrl: {
@@ -14,25 +14,23 @@ const LoggerSchema = new mongoose.Schema({
         {
             IP_Address: { type: String, required: true },
             UserAgent: { type: String, required: true },
-            device: String,
-            os: String,
-            browser: String,
+            device: { type: String },
+            os: { type: String },
+            browser: { type: String },
             location: {
-                country: String,
-                region: String,
-                city: String
+                country: { type: String },
+                region: { type: String },
+                city: { type: String }
             },
-            method: String,
-            endpoint: String,
-            status: Number,
-            suspicious: Boolean,
-            date: { type: Date, default: Date.now() }
+            method: { type: String },
+            endpoint: { type: String },
+            date: { type: Date, default: Date.now }
         }
     ],
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     }
-})
+});
 
-module.exports = mongoose.model("Logger", LoggerSchema)
+module.exports = mongoose.model("Logger", LoggerSchema);
