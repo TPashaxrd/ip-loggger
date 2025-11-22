@@ -1,4 +1,4 @@
-# IPLogger Dashboard
+# IPLogger
 
 > Modern ve hızlı bir IP Logger dashboard uygulaması. Kullanıcılar kendi takip linklerini oluşturabilir ve logları gerçek zamanlı olarak görüntüleyebilir.  
 > Tema: Karanlık, modern ve renkli UI (Brand renkleri: Indigo, Purple, Emerald).
@@ -30,8 +30,8 @@
 
 1. Repo’yu klonla:  
 ```bash
-git clone https://github.com/kullanici/iplogger-dashboard.git
-cd iplogger-dashboard
+git clone https://github.com/TPashaxrd/ip-logger
+cd ip-logger
 ````
 
 2. Frontend bağımlılıklarını yükle:
@@ -43,7 +43,7 @@ npm install
 3. `.env` BACKEND'deki env kısmını kendine göre editle.
 
 ```env
-REACT_APP_API_URL=http://localhost:5000
+MONGO_URL=YOUR-MONGO-URL
 ```
 
 4. Uygulamayı başlat:
@@ -55,7 +55,7 @@ npm start
 5. Tarayıcıda aç:
 
 ```
-http://localhost:3000
+http://localhost:5173
 ```
 
 ---
