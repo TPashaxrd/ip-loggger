@@ -180,7 +180,7 @@ function Auth() {
         </div>
 
         <div className="px-8 py-4 bg-slate-950/50 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
-          <span>© 2024 IPLogger.io</span>
+          <span>© 2025 IPLogger.io</span>
           <div className="flex items-center space-x-2">
             <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span>System Operational</span>

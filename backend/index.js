@@ -16,7 +16,8 @@ app.set("trust proxy", 1)
 db()
 
 const allowedOrigins = [
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://vn27f5xd-5173.euw.devtunnels.ms"
 ]
 
 app.use(cors({

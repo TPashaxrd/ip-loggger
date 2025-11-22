@@ -17,7 +17,8 @@ createRoot(document.getElementById('root')!).render(
 
     <Route path='/watch/:id' element={<WatchLogger/>}/>
     <Route path='/x/:loggerId' element={<Request/>}/>
-
+    <Route path='/log/:loggerId' element={<Request/>}/>
+    
     <Route path='*' element={<NoPage/>}/>
    </Routes>
   </BrowserRouter>

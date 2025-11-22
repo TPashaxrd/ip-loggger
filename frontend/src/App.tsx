@@ -25,15 +25,16 @@ function Dashboard() {
         { withCredentials: true }
       );
       setResponseData(res.data);
-      if(res.status === 201) {
-        setTimeout(() => window.location.href = `/watch/${res?.data?._id}`)
-      }
+      console.log(res.data)
+      window.location.href = `${window.location.origin}/watch/${res.data.loggerId}`;
+
       setRedirectUrl("");
     } catch (err: any) {
       alert(err.response?.data?.message || "Error");
     }
     setLoading(false);
   };
+
 
   if (!user) return null;
 
@@ -97,9 +98,12 @@ function Dashboard() {
               <p className="mt-2"><span className="font-semibold">Logger ID:</span> <span className="font-mono">{responseData.loggerId}</span></p>
               <p className="mt-1"><span className="font-semibold">Tracking URL:</span></p>
               <div className="flex items-center justify-between mt-1 bg-slate-900/50 px-3 py-2 rounded-lg font-mono text-xs">
-                <span>{window.location.origin}/watch/{responseData._id}{responseData.trackingUrl}</span>
+                <span>
+                  {window.location.origin}/watch/{responseData?.loggerId}
+                </span>
+
                 <button
-                 title="Watch" onClick={() => navigator.clipboard.writeText(`${window.location.origin}/watch/${responseData._id}${responseData.trackingUrl}`)}
+                 title="Watch" onClick={() => navigator.clipboard.writeText(`${window.location.origin}/watch/${responseData?.loggerId}`)}
                   className="bg-brand-500 hover:bg-brand-400 px-2 py-1 rounded-lg text-white flex items-center gap-1"
                 >
                   <Eye className="h-4 w-4"/>

@@ -31,14 +31,7 @@ export const LoggerTracker = () => {
   
   useEffect(() => {
     const sendLog = async () => {
-      try {
-        await fetch(\`\${apiUrl}/log/\${loggerId}\`, {
-          method: 'POST',
-          credentials: 'include'
-        });
-      } catch (e) {
-        console.error("Log failed to send", e);
-      }
+      window.location.href = \`\${apiUrl}/log/\${loggerId}\`
     };
     sendLog();
   }, [apiUrl, loggerId]);
