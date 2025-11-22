@@ -3,11 +3,11 @@ const bcrypt = require("bcryptjs")
 
 const CreateAuth = async (req, res) => {
     try {
-        const { username, IP_Address, password, email } = req.body;
+        const { username, password, email } = req.body;
         if(!username || !password || !email) {
             return res.status(400).json({ message: "All fields are required."})
         }
-        
+        const IP_Address = req.ip || req.headers["x-forwarded-for"] || req.socket?.remoteAddress || req.connection.remoteAddress;
         // I'll use validator after I update module lol
 
 
@@ -32,19 +32,18 @@ const CreateAuth = async (req, res) => {
 }
 
 const Login = async (req, res) => {
-    const { email, password, IP_Address } = req.body;
+    const { email, password } = req.body;
     try {
         const user = await User.findOne({ email })
+        const IP_Address = req.ip || req.headers["x-forwarded-for"] || req.socket?.remoteAddress || req.connection.remoteAddress;
         if(!user) {
             return res.status(400).json({ message: "Invalid credentials"})
-        }
-        if(IP_Address.length < 11) {
-            return res.status(400).json({ message: "Invalid IP Address"})
         }
         const match = await bcrypt.compare(password, user.password)
         if(!match) {
             return res.status(400).json({ message: "Invalid password."})
         }
+        // const checkBan = await user
 
         user.lastLogins.push({
             IP_Address
