@@ -11,7 +11,7 @@ const AdminRoutes = require("./routes/Admin")
 const { CheckUserAgent } = require("./middlewares/UserAgentCheck")
 const app = express()
 
-app.set("trust proxy", 0)
+app.set("trust proxy", 1)
 
 db()
 
