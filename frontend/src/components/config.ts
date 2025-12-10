@@ -1,3 +1,3 @@
 export const data = {
-    api: "http://localhost:5000"
+    api: "https://vn27f5xd-5000.euw.devtunnels.ms"
 }
